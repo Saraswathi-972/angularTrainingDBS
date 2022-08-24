@@ -1,0 +1,28 @@
+<h1 align="center" [ngStyle]="{'font-family': 'Georgia, serif','color':'gray'}">PAYMENT TRANSACTIONS</h1><br>
+<div class="container" [ngStyle]="{'background-color':'skyblue','color':'gray', 'width':'1000px', 'height':'300px', 'border-style': 'solid', 'border-width': '20px','border-color': 'pink','border-radius': '25px','outline-style': 'solid','outline-color': 'gray','outline-width':'20px'}">
+    <div align="center">
+<form ngNativeValidate><mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [min]="todayDate" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br></form>
+<b><label for="" [ngStyle]="{'font-size':'20px'}">ACCOUNT NUMBER:  </label></b>&nbsp;
+<input type="text" [ngStyle]="{'color':'black'}" placeholder="Enter Your AccountNo" [(ngModel)]="senderAccountNumber" appOnlyNumber="14" (ngModelChange)="enableButton()"/>&nbsp;&nbsp;
+<button (click)="getDetails()"  [disabled]="isDisabled" [ngStyle]="{'background-color':'gray', 'color':'black'}" class="btn btn-primary" >Verify</button>
+<br><br>
+<div *ngIf="isValidAcc; else display">
+<b><label for="" [ngStyle]="{'font-size':'20px','color':'gray'}">ACCOUNT HOLDER NAME: </label></b>&nbsp;
+<input type="text" [ngStyle]="{ 'color':'black'}" value={{apiData.accountHolderName}} disabled><br> <br>
+<b><label for="" [ngStyle]="{'font-size':'20px'}">ACCOUNT BALANCE: </label></b>&nbsp;   
+<input type="text" [ngStyle]="{'color': 'black'}" value={{apiData.clearBalance}} disabled>
+<br><br>
+<button (click)="reciverMethod()" class="btn btn-primary" [ngStyle]="{'background-color':'gray', 'color':'black'}">Submit</button>
+
+</div>
+
+<ng-template #display>
+    <!-- <p>no details</p> -->
+</ng-template>
+</div>
+</div>

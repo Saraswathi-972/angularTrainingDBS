@@ -1,0 +1,30 @@
+<b><h1 align="center" [ngStyle]="{'font-family': 'Georgia, serif','color':'gray'}">ENTER THE BENIFICIARY DETAILS!!</h1></b>
+<div align="center" class="container" [ngStyle]="{'background-color':'skyblue','color':'gray', 'margin-left': '300px','width':'600px', 'height':'300px', 'border-style': 'solid', 'border-width': '20px','border-color': 'pink','border-radius': '25px','outline-style': 'solid','outline-color': 'gray','outline-width':'20px'}">
+<div align="center">
+<br><b><label [ngStyle]="{'font-size':'20px'}">BIC NUMBER:</label></b>&nbsp;
+<input type="text" [ngModel]="bicNumber" (ngModelChange)="bicNumber = $event.toUpperCase()" (ngModelChange)="checkBICLen()">
+<button (click)="checkBIC()" [disabled]="isDisabled" [ngStyle]="{'background-color':'gray', 'color':'black'}">Validate</button>
+<br>
+<br>
+<div *ngIf="isValidBIC; else display">
+    <b><label for="" [ngStyle]="{'font-size':'20px','color':'gray'}">INSTITUTION NAME:</label></b>  &nbsp;  
+    <input type="text" value={{rApiData.bankName}} disabled>
+    <br>
+    <br>
+    <b><label [ngStyle]="{'font-size':'20px','color':'gray'}"> ACCOUNT HOLDER NAME:</label></b>&nbsp;
+    <input type="text" [ngStyle]="{ 'color':'black'}" [(ngModel)]="accHolderName">
+    <br><br>
+    <b><label [ngStyle]="{'font-size':'20px','color':'gray'}"> ACCOUNT NUMBER:</label></b>&nbsp;
+    <input type="text" [ngStyle]="{ 'color':'black'}" [(ngModel)]="accNumber" appOnlyNumber>
+    <!-- <button (click)="reciverMethod()">Next</button> -->
+    <br>
+    <br>
+    <button  (click)="checkSanction()" [ngStyle]="{'background-color':'gray', 'color':'black'}" >Submit</button>
+</div>
+    
+    
+    <ng-template #display>
+        <!-- <p>no details</p> -->
+    </ng-template>
+</div>
+</div>

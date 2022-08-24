@@ -1,0 +1,39 @@
+<h1 align="center" [ngStyle]="{'font-family': 'Georgia, serif','color':'gray'}">PAYMENT TRANSACTIONS</h1><br>
+<div align="center" class="container" [ngStyle]="{'background-color':'skyblue','color':'gray', 'margin-left': '300px','width':'600px', 'height':'200px', 'border-style': 'solid', 'border-width': '20px','border-color': 'pink','border-radius': '25px','outline-style': 'solid','outline-color': 'gray','outline-width':'20px'}">
+  <div align="center">
+<br><label for="ttype" [ngStyle]="{'font-size':'20px','color':'gray'}">TRANSFER TYPE:</label>&nbsp;
+<select name="ttype" id="ttype" [(ngModel)]="transferType" (ngModelChange)="matchTransferType()">
+  <option value="" disabled selected hidden>Select your option</option>
+  <option value="customer">Customers</option>
+  <option value="bank">Bank</option>
+</select>
+<br>
+<br>
+<label [ngStyle]="{'font-size':'20px','color':'gray'}">MESSAGE CODE:</label>&nbsp;
+<select  [(ngModel)]="msgCode" (ngModelChange)="checkAllFields()">
+  <option value="" disabled selected hidden>Select your option</option>
+  <option value="CHQB">CHQB</option>
+  <option value="CORT">CORT</option>
+  <option value="HOLD">HOLD</option>
+  <option value="INTC">INTC</option>
+  <option value="PHOB">PHOB</option>
+  <option value="PHOI">PHOI</option>
+  <option value="PHON">PHON</option>
+  <option value="REPA">REPA</option>
+  <option value="SDVA">SDVA</option>
+</select>
+<br>
+<br>
+<!-- <label [ngStyle]="{'font-size':'20px','color':'gray'}">ENTER TRANSFER AMOUNT:</label>&nbsp;
+<input type="text" [(ngModel)]="transferAmount" appOnlyNumber>
+<br><br>
+<button (click)="transferBalance()" [ngStyle]="{'background-color':'gray', 'color':'black'}">Transfer</button> -->
+
+<label>Enter Transfer Amount</label>
+<br>
+<input type="text" [(ngModel)]="transferAmount" appOnlyNumber (ngModelChange)="checkAllFields()">
+<br>
+<button class="btn btn-success" (click)="transferBalance()" [disabled]="isDisabledTransfer">Transfer</button>
+ 
+</div>
+</div>
