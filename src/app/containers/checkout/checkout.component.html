@@ -1,0 +1,44 @@
+<button type="button" (click)="loadData()">Load</button>
+<button type="button" (click)="patchData()">Patch</button>
+<form [formGroup]="checkoutForm" (submit)="saveData()">
+    <div>
+      <label>Name</label>
+      <input type="text" formControlName="name" placeholder="Enter Name" />
+      <div *ngIf="checkoutForm.get('name')?.touched">
+        <!-- ? : safe navigation operator : to handle null values -->
+        <small *ngIf="checkoutForm.get('name')?.hasError('required')">Name is required</small>
+        <small *ngIf="checkoutForm.get('name')?.hasError('minlength')">Min {{ checkoutForm.get("name")?.getError("minlength").requiredLength }}
+        chars is required</small
+      >
+    </div>
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="text" formControlName="email"  />
+      <div *ngIf="checkoutForm.get('email')?.touched">
+        <!-- ? : safe navigation operator :used to handle null values -->
+        <small *ngIf="checkoutForm.get('email')?.hasError('required')"
+          >Email is required</small
+        >
+        <small *ngIf="checkoutForm.get('email')?.hasError('pattern')"
+          >Invalid email format</small
+        >
+      </div>
+    </div>
+    <div>
+        <label>Pincode</label>
+        <input type="text" formControlName="pincode" />
+        <div *ngIf="checkoutForm.get('pincode')?.touched">
+          <!-- ? : safe navigation operator :used to handle null values -->
+          <small 
+          *ngIf="checkoutForm.get('pincode')?.hasError('required')"
+            >Pincode is required</small
+          >
+          <small *ngIf="checkoutForm.get('pincode')?.hasError('zipcode')"
+        >Allowed pincode is
+        {{ checkoutForm.get("pincode")?.getError("zipcode").allowedCode }}
+      </small>
+        </div>
+      </div>
+    <button type="submit">Submit</button>
+  </form>

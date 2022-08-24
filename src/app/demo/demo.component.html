@@ -1,0 +1,24 @@
+<h1>One way binding</h1>
+<h3>String interpolation</h3>
+<p>{{ demodata }}</p>
+<p>{{ demodata.toUpperCase() }}</p>
+<p>{{ 9+8 }}</p>
+<p>
+    <input type="text" value="demodata"/>
+</p>
+<p>
+    <input type="text" value="{{demodata}}"/>
+</p>
+<h3>Property binding : []</h3>
+<p>
+    <input type="text" [value]="demodata"/>
+</p>
+<h1>Event Binding</h1>
+<button (click)="showalert()">Click Me</button>
+<h1>Two Way Data Binding</h1>
+<p>
+    <input type="text" [(ngModel)]="demodata" />
+  </p>
+  <input type="text" appNumbersOnly/>
+  <input type="text" appNumbersOnly=4/>
+  <input type="text" [appNumbersOnly]="allowedDigits"/>

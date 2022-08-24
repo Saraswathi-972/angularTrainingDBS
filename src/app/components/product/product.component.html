@@ -1,0 +1,8 @@
+<div>
+  <img [src]="data.productImage" [routerLink]="['/detail', data.productId]" />    <h4>{{ data.productName | uppercase }}</h4>
+    <h5>{{ data.productPrice | conversion : currencyCode | currency: currencyCode:"symbol" :"2.1"}}</h5>
+    <button (click)="notifyParent()" *ngIf="data.productId > 100;else stock">Add to Cart</button>
+  </div>
+  <ng-template #stock>
+    <p>Out of stock</p>
+  </ng-template>

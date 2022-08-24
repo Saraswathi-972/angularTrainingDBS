@@ -1,0 +1,11 @@
+<div *ngIf="hasError; else displayProducts">
+  No data found
+</div>
+<ng-template #displayProducts>
+<div *ngFor="let item of plist">
+    <app-product
+    [currencyCode]="currentCurrency"
+    [data]="item" 
+    (btnClick)="addItem($event)"></app-product>
+  </div>
+</ng-template>

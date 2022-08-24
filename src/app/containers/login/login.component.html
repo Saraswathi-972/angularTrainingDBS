@@ -1,0 +1,9 @@
+<form [formGroup]="loginForm" (submit)="doLogin()">
+    <input type="text" formControlName="email" placeholder="Enter email" />
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Enter password"
+    />
+    <button type="submit">Login</button>
+  </form>
